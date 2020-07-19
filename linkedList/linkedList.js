@@ -1,10 +1,3 @@
-var ListItem = /** @class */ (function () {
-    function ListItem(value) {
-        this.value = value;
-        this.next = null;
-    }
-    return ListItem;
-}());
 var LinkedList = /** @class */ (function () {
     function LinkedList() {
         this.head = null;
@@ -36,7 +29,10 @@ var LinkedList = /** @class */ (function () {
         configurable: true
     });
     LinkedList.prototype.push = function (value) {
-        var node = new ListItem(value);
+        var node = {
+            value: value,
+            next: null,
+        };
         var current;
         if (this.head === null) {
             this.head = node;
@@ -69,7 +65,10 @@ var LinkedList = /** @class */ (function () {
             var current = this.head;
             var newIndex = 0;
             var prevNode = void 0;
-            var node = new ListItem(value);
+            var node = {
+                value: value,
+                next: null,
+            };
             if (!index) {
                 node.next = current;
                 this.head = node;
@@ -124,13 +123,3 @@ var LinkedList = /** @class */ (function () {
     };
     return LinkedList;
 }());
-var linkedList = new LinkedList();
-linkedList.push(1);
-linkedList.push(1);
-linkedList.push(2);
-linkedList.push(3);
-linkedList.push(5);
-linkedList.insert(6, 3);
-linkedList.removeAt(3);
-var linkedListString = linkedList.toString();
-console.log(linkedListString);

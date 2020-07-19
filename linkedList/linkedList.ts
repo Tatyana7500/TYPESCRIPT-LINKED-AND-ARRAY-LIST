@@ -1,27 +1,22 @@
-class ListItem {
-    public value: any;
-    public next: ListItem | null;
-
-    constructor(value: any) {
-        this.value = value;
-        this.next = null;
-    }
+interface IListItem<T> {
+    value: T;
+    next: IListItem<T> | null;
 }
 
-class LinkedList {
-    private head: ListItem | null = null;
+class LinkedList<T> {
+    private head: IListItem<T> | null = null;
     private length: number = 0;
 
     get getLength(): number {
         return this.length;
     }
 
-    get getFirstItem(): ListItem | null {
+    get getFirstItem(): IListItem<T> | null {
         return this.head;
     }
 
-    get getLastItem(): ListItem | null {
-        let node: ListItem | null = this.head;
+    get getLastItem(): IListItem<T> | null {
+        let node: IListItem<T> | null = this.head;
 
         while (node) {
             node = node.next;
@@ -30,9 +25,12 @@ class LinkedList {
         return node;
     }
 
-    public push(value: any): number {
-        const node: ListItem = new ListItem(value);
-        let current: ListItem | null;
+    public push(value: T): number {
+        const node: IListItem<T> = {
+            value,
+            next: null,
+        };
+        let current: IListItem<T> | null;
 
         if (this.head === null) {
             this.head = node;
@@ -50,7 +48,7 @@ class LinkedList {
     }
 
     public pop(): number {
-        let node: ListItem | null = this.head;
+        let node: IListItem<T> | null = this.head;
 
         if (!node) {
             return 0;
@@ -69,13 +67,16 @@ class LinkedList {
         return this.length--;
     }
 
-    public insert(value: any, index: number): boolean {
+    public insert(value: T, index: number): boolean {
         if (index > -1 && index < this.length) {
-            let current: ListItem | null = this.head;
+            let current: IListItem<T> | null = this.head;
             let newIndex: number = 0;
-            let prevNode: ListItem;
+            let prevNode: IListItem<T>;
 
-            let node: ListItem = new ListItem(value);
+            let node: IListItem<T> = {
+                value,
+                next: null,
+            };
 
             if (!index) {
                 node.next = current;
@@ -98,10 +99,10 @@ class LinkedList {
         return false;
     }
 
-    public removeAt(index: number): any {
+    public removeAt(index: number): T {
         if (index > -1 && index < this.length) {
-            let current: ListItem | null = this.head;
-            let prevNode: ListItem | null;
+            let current: IListItem<T> | null = this.head;
+            let prevNode: IListItem<T> | null;
             let newIndex: number = 0;
 
             if (index === 0) {
@@ -128,7 +129,7 @@ class LinkedList {
     }
 
     public toString(separator: string = ', '): string {
-        let node: ListItem | null = this.head;
+        let node: IListItem<T> | null = this.head;
         const stringArray: string[] = [];
 
         while (node) {
