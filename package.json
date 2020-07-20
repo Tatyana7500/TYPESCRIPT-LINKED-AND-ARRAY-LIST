@@ -1,0 +1,23 @@
+{
+  "name": "TYPESCRIPT-LINKED-AND-ARRAY-LIST",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tatyana7500/TYPESCRIPT-LINKED-AND-ARRAY-LIST.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tatyana7500/TYPESCRIPT-LINKED-AND-ARRAY-LIST/issues"
+  },
+  "homepage": "https://github.com/Tatyana7500/TYPESCRIPT-LINKED-AND-ARRAY-LIST#readme",
+  "dependencies": {
+    "typescript": "^3.9.7"
+  }
+}
